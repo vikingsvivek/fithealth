@@ -13,7 +13,9 @@ Vagrant.configure("2") do |config|
     end
 	## Below is not needed as by default, vagrant copies all files from project root to /vagrant shared directory
 	## But we might need to use this way as all places the src/main location will be hardcoded which is suscipltible for code change, also update the paths in scripts accordingly
-	#dbserver.vm.provision "copy-mysql-secure-installation-expect-script", type: "file", source: "./src/main/sh/mysql-server-setup.sh", destination: #"/tmp/"
+	dbserver.vm.provision "copy-mysql-expect-script", type: "file", source: "./src/main/sh/expect_mysql_secure_installation.sh", destination: "/tmp/"
+	dbserver.vm.provision "copy-db-schema", type: "file", source: "./src/main/db/db-schema.sql", destination: "/tmp/"
+	dbserver.vm.provision "copy-add-user", type: "file", source: "./src/main/db/mysql-add-user.sql", destination: "/tmp/"
     dbserver.vm.provision "mysql-server", type: "shell", path: "./src/main/sh/mysql-server-setup.sh"
 	dbserver.vm.provision "configure-mysql-remote-access", type: "shell", path: "./src/main/sh/configure_remote_access.sh"
   end
@@ -26,6 +28,8 @@ Vagrant.configure("2") do |config|
 	  #webprovider.cpus=2
 	  #webprovider.memory=2048
     end
+	webserver.vm.provision "copy-war", type: "file", source: "./target/fithealthapp.war", destination: "/tmp/", run: "always"
+	webserver.vm.provision "copy-tomcat-service", type: "file", source: "./src/main/config/tomcat.service", destination: "/tmp/"
 	webserver.vm.provision "setup-web-server", type: "shell", path: "./src/main/sh/web-server-setup.sh"
 	webserver.vm.provision "deploy-web-app", type: "shell", path: "./src/main/sh/deploy-war.sh", run: "always"
   end

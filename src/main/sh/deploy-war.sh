@@ -5,7 +5,7 @@ function deployWar(){
 	sudo systemctl stop tomcat
 	echo "USER_HOME : $HOME"
 	sudo rm -rf $HOME/middleware/apache-tomcat-10.0.14/fithealth*
-	sudo cp /vagrant/target/fithealthapp.war $HOME/middleware/apache-tomcat-10.0.14/webapps
+	sudo cp /tmp/fithealthapp.war $HOME/middleware/apache-tomcat-10.0.14/webapps
 	sudo systemctl start tomcat
 	local WAR_DEPLOY_STATUS=$?
 	return $WAR_DEPLOY_STATUS

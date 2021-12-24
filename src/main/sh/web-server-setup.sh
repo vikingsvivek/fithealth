@@ -42,7 +42,7 @@ function checkTomcatServiceStatus(){
 
 function configureTomcatService(){
 	echo "INFO: USER_HOME : $HOME"
-	sudo cp /vagrant/src/main/config/tomcat.service  /etc/systemd/system/tomcat.service
+	sudo cp /tmp/tomcat.service  /etc/systemd/system/tomcat.service
 	sudo sed -i "s|#USER_HOME#|$HOME|g" /etc/systemd/system/tomcat.service
 	
 	sudo systemctl daemon-reload

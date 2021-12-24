@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-source /vagrant/src/main/sh/expect_mysql_secure_installation.sh 
+source /tmp/expect_mysql_secure_installation.sh
 ##### Funcation Definitions here
 
 function checkMySQLInstalled() {
