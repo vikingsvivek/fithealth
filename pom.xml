@@ -55,6 +55,20 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	
+	<distributionManagement>
+    <repository>
+      <id>central</id>
+      <name>fithealth-virtual-release</name>
+      <url>http://repo.fithealth.com/artifactory/fithealth-virtual-release</url>
+    </repository>
+    <snapshotRepository>
+      <id>snapshots</id>
+      <name>fithealth-virtual-snapshot</name>
+      <url>http://repo.fithealth.com/artifactory/fithealth-virtual-snapshot</url>
+    </snapshotRepository>
+	</distributionManagement>
+
 
 	<build>
 		<finalName>fithealthapp</finalName>
