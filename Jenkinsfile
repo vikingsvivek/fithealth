@@ -10,7 +10,7 @@ pipeline{
     }
     parameters{
         string name: 'TARGET_HOST', defaultValue: 'agentDefault'
-        string name: 'SOURCE_BRANCH',  defaultValue: 'master'
+        string name: 'SOURCE_BRANCH',  defaultValue: 'main'
         choice choices: ['DEV', 'TEST','RFS', 'PROD'], name: 'ENVIRONMENT'
     }
     stages{
